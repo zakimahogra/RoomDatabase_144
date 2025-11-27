@@ -27,4 +27,11 @@ fun HostNavigasi(
     {
         composable(DestinasiHome.route) {
             HomeScreen(
-                navigateToItemEntry = {
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route) },
+            )
+        }
+        composable(DestinasiEntry.route){
+            EntrySiswaScreen(navigateBack = { navController.popBackStack()})
+        }
+    }
+}
