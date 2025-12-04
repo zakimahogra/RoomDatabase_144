@@ -90,3 +90,20 @@ fun DetailSiswaScreen(
         )
     }
 }
+
+@Composable
+private fun BodyDetailDataSiswa(
+    detailSiswaUiState: DetailSiswaUiState,
+    onDelete: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Column(
+        modifier = modifier.padding(dimensionResource(id = R.dimen.padding_medium)),
+        verticalArrangement = Arrangement.spacedBy(dimensionResource(id = R.dimen.padding_medium))
+    ) {
+        var deleteConfirmationRequired by rememberSaveable { mutableStateOf(false) }
+
+        DetailDataSiswa(
+            siswa = detailSiswaUiState.detailSiswa.toSiswa(),
+            modifier = Modifier.fillMaxWidth()
+        )
