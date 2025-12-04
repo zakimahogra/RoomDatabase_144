@@ -9,22 +9,25 @@ import com.example.roomdatabase.repositori.AplikasiSiswa
 import com.example.roomdatabase.viewmodel.DetailViewModel
 import com.example.roomdatabase.viewmodel.EntryViewModel
 import com.example.roomdatabase.viewmodel.HomeViewModel
+import com.example.roomdatabase.viewmodel.EditViewModel  // TAMBAHKAN IMPORT INI
 
 object PenyediaViewModel{
     val Factory = viewModelFactory{
-        // 1. Inisialisasi HomeViewModel
         initializer {
             HomeViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
-
-        // 2. Inisialisasi EntryViewModel (HANYA SEKALI)
         initializer {
             EntryViewModel(aplikasiSiswa().container.repositoriSiswa)
         }
-
-        // 3. Inisialisasi DetailViewModel
         initializer {
             DetailViewModel(
+                this.createSavedStateHandle(),
+                aplikasiSiswa().container.repositoriSiswa
+            )
+        }
+        // TAMBAHKAN INI ⬇️⬇️⬇️
+        initializer {
+            EditViewModel(
                 this.createSavedStateHandle(),
                 aplikasiSiswa().container.repositoriSiswa
             )
